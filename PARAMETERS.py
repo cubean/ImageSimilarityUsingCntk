@@ -4,8 +4,8 @@ import sys, os
 
 #######################################
 #######################################
-datasetName = "fashionTexture"          # Name of the image directory, e.g. /data/myFashion_texture/
-
+# datasetName = "fashionTexture"          # Name of the image directory, e.g. /data/myFashion_texture/
+datasetName = "costumebox/training/womens-costumes"          # Name of the image directory, e.g. /data/myFashion_texture/
 
 ###################
 # Parameters
@@ -50,7 +50,9 @@ svm_probabilityCalibrationNegPosRatio = 10 # Negative-to-positive ratio for Plat
 print("PARAMETERS: datasetName = " + datasetName)
 
 # Directories
-rootDir      = os.path.dirname(os.path.realpath(sys.argv[0])).replace("\\","/") + "/"
+# rootDir      = os.path.dirname(os.path.realpath(sys.argv[0])).replace("\\","/") + "/"
+rootDir      = "/data/home/cubean/notebooks/git/ImageSimilarityUsingCntk/cntk/"
+
 imgDir       = rootDir + "data/"    + datasetName + "/"
 resourcesDir = rootDir + "resources/"
 procDir      = rootDir + "proc/"    + datasetName + "/"
@@ -58,7 +60,9 @@ resultsDir   = rootDir + "results/" + datasetName + "/"
 workingDir   = rootDir + "tmp/"
 
 # Files
-imgUrlsPath             = resourcesDir + "fashionTextureUrls.tsv"
+# imgUrlsPath             = resourcesDir + "fashionTextureUrls.tsv"
+imgUrlsPath             = resourcesDir + datasetName + "_urls.tsv"
+
 imgInfosTrainPath       = procDir + "imgInfosTrain.pickle"
 imgInfosTestPath        = procDir + "imgInfosTest.pickle"
 imgFilenamesTrainPath   = procDir + "imgFilenamesTrain.pickle"

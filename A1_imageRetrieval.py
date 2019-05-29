@@ -7,7 +7,9 @@ locals().update(importlib.import_module("PARAMETERS").__dict__)
 ####################################
 # Parameters
 ####################################
-queryImgPath = "./data/fashionTexture/striped/95.jpg"  #pointer to an image anywhere on disk
+# queryImgPath = "./data/fashionTexture/striped/95.jpg"  #pointer to an image anywhere on disk
+queryImgPath = "/git/cntk/data/costumebox/prediction/womens-costumes/sexy-costumes/31969-skelton.jpg"  #pointer to an image anywhere on disk
+
 distMethod = 'weightedL2'  # Options: 'L2', 'weightedL2', 'weightedL2Prob', ...
 
 
@@ -81,6 +83,8 @@ print("DONE.")
 #-----------------------------------------------------------------------------------------------------------------------
 # Visualization
 #-----------------------------------------------------------------------------------------------------------------------
+plt.figure(figsize=(18, 16), dpi=200)
+
 pltAxes = [plt.subplot(4, 5, i + 1) for i in range(4*5)]
 pltAxes[0].imshow(imconvertCv2Numpy(queryImg))
 pltAxes[0].set_title("Query image")

@@ -9,3 +9,5 @@
 /resources/cntk/ResNet_34.*
 /resources/cntk/ResNet_50.*
 /tmp/
+/.vscode/
+/cntk/
