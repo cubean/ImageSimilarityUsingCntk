@@ -8,7 +8,9 @@ locals().update(importlib.import_module("PARAMETERS").__dict__)
 # Parameters
 ####################################
 # queryImgPath = "./data/fashionTexture/striped/95.jpg"  #pointer to an image anywhere on disk
-queryImgPath = "/git/cntk/data/costumebox/prediction/womens-costumes/sexy-costumes/31969-skelton.jpg"  #pointer to an image anywhere on disk
+# queryImgPath = "/data/home/cubean/notebooks/git/ImageSimilarityUsingCntk/cntk/data/costumebox/training/womens-costumes/sexy-costumes/10287-queen.jpg"  #pointer to an image anywhere on disk
+# queryImgPath = "/data/home/cubean/notebooks/git/ImageSimilarityUsingCntk/cntk/data/costumebox/training/womens-costumes/party-busters/120824-vampiress.jpg"  #pointer to an image anywhere on disk
+queryImgPath = "/data/home/cubean/notebooks/git/ImageSimilarityUsingCntk/cntk/data/costumebox/training/womens-costumes/womens-elegant-costumes/00711-juliet.jpg"  #pointer to an image anywhere on disk
 
 distMethod = 'weightedL2'  # Options: 'L2', 'weightedL2', 'weightedL2Prob', ...
 

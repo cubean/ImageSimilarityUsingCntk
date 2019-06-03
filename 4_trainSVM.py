@@ -2,7 +2,8 @@
 from helpers import *
 locals().update(importlib.import_module("PARAMETERS").__dict__)
 
-
+import datetime
+current_time1 = datetime.datetime.now()
 ####################################
 # Main
 ####################################
@@ -69,3 +70,5 @@ print("Wrote svm to: " + svmPath + "\n")
 print("DONE. Showing SVM score vs probability.")
 plotScoreVsProbability(bestLearner, feats_train, feats_test).show()
 
+current_time2 = datetime.datetime.now()
+print ("This step took time: %s" % (current_time2 - current_time1))

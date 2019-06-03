@@ -3,7 +3,8 @@ from helpers import *
 from helpers_cntk import *
 locals().update(importlib.import_module("PARAMETERS").__dict__)
 
-
+import datetime
+current_time1 = datetime.datetime.now()
 ################################################
 # MAIN
 ################################################
@@ -25,3 +26,6 @@ for feat in list(features.values()):
 print("Writting CNTK outputs to file %s ..." % featuresPath)
 saveToPickle(featuresPath, features)
 print("DONE.")
+current_time2 = datetime.datetime.now()
+print ("This step took time: %s" % (current_time2 - current_time1))
+

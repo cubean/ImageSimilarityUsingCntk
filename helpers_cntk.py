@@ -85,13 +85,13 @@ def create_model(base_model_file, input_features, num_classes,  dropout_rate = 0
 
 
 # Trains a transfer learning model
-def train_model(base_model_file, train_map_file, test_map_file, input_resolution,
+def train_model(base_model_file, train_map_file, test_map_file, input_resolution_width,input_resolution_height,
                 num_epochs, mb_size, max_train_images, lr_per_mb, momentum_per_mb, l2_reg_weight,
                 dropout_rate, freeze_weights, num_channels = 3):
 
     #init
-    image_width  = input_resolution
-    image_height = input_resolution
+    image_width  = input_resolution_width
+    image_height = input_resolution_height
     epoch_size_test  = len(readTable(test_map_file))
     epoch_size_train = len(readTable(train_map_file))
     epoch_size_train = min(epoch_size_train, max_train_images)

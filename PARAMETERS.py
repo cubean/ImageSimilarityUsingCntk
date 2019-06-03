@@ -19,15 +19,18 @@ test_maxQueryImgsPerSubdir  = 20        # Number of query images used to evaluat
 test_maxNegImgsPerQueryImg  = 100       # Number of negative images per test query image
 
 # Model refinement parameters (script: 2_refineDNN.py)
-rf_modelFilename = "ResNet_18.model"    # Pre-trained ImageNet model
-rf_inputResoluton = 224                 # DNN image input width and height in pixels
-rf_dropoutRate    = 0.5                 # Droputout rate
-rf_mbSize         = 16                  # Minibatch size (reduce if running out of memory)
+rf_modelFilename = "ResNet18_ImageNet_CNTK.model"    # Pre-trained ImageNet model, default resnet_18.model
+rf_inputResoluton = 720                 # DNN image input width and height in pixels
+rf_inputResoluton_width = 720           # DNN image input width in pixels
+rf_inputResoluton_height = 720          # DNN image input height in pixels
+
+rf_dropoutRate    = 0.5                 # Dropout rate, default is 0.5
+rf_mbSize         = 16                  # Minibatch size (reduce if running out of memory), default is 16. for 2048 dimensons, 10 is good.
 rf_maxEpochs      = 45                  # Number of training epochs. Set to 0 to skip DNN refinement
-rf_maxTrainImages = float('inf')        # Naximum number of training images per epoch. Set to float('inf') to use all images
-rf_lrPerMb        = [0.01] * 20 + [0.001] * 20 + [0.0001]  # Learning rate schedule
+rf_maxTrainImages = float('inf')        # Maximum number of training images per epoch. Set to float('inf') to use all images
+rf_lrPerMb        = [0.01] * 20 + [0.001] * 20 + [0.0001]  # Learning rate schedule. Default [0.01] * 20 + [0.001] * 20 + [0.0001]
 rf_momentumPerMb  = 0.9                 # Momentum during gradient descent
-rf_l2RegWeight    = 0.0005              # L2 regularizer weight during gradient descent
+rf_l2RegWeight    = 0.000005               # L2 regularizer weight during gradient descent, default 0.0005
 rf_boFreezeWeights      = False         # Set to 'True' to freeze all but the very last layer. Otherwise the full network is refined
 rf_boBalanceTrainingSet = False         # Set to 'True' to duplicate images such that all labels have the same number of images
 
@@ -77,9 +80,11 @@ featuresPath            = procDir + "features.pickle"
 svmPath                 = procDir + "svm.np"
 
 # Dimension of the DNN output, for "ResNet_18.model" this is 512
-if rf_modelFilename.lower()   == "resnet_18.model" or rf_modelFilename.lower() == "resnet_34.model":
+if rf_modelFilename.lower()   == "ResNet18_ImageNet_CNTK.model".lower() or rf_modelFilename.lower() == "ResNet34_ImageNet_CNTK.model".lower():
     rf_modelOutputDimension = 512
-elif rf_modelFilename.lower() == "resnet_50.model":
+elif rf_modelFilename.lower() == "ResNet50_ImageNet_CNTK.model".lower():
+    rf_modelOutputDimension = 2048
+elif rf_modelFilename.lower()   == "ResNet101_ImageNet_CNTK.model".lower():
     rf_modelOutputDimension = 2048
 else:
     raise Exception("Model featurization dimension not specified.")
